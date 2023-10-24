@@ -1,6 +1,3 @@
-# For Cosmoteer, figures out a nice amount and power of output beams for an amount of input beams
-# Made by rottis
-# You are free to use and redistribute this code anywhere
 
 puts("count of ions?")
 count = gets.chomp.to_i
@@ -32,16 +29,21 @@ if divib == 0
 end
 
 class Array
-  def combine
-    i = 0
-    while self[i] != self[i+1]
-      i += 1
-      if (i+1) >= self.length
-        raise Exception
+  def combine(times = 1)
+    first = true
+    times.times do 
+      i = 0
+      while (self[i] != self[i+1]) && (first || matchable == self[i])
+        i += 1
+        if (i+1) >= self.length
+          raise Exception
+        end
       end
+      self << (self.delete_at(i) + self.delete_at(i))
+      self.sort!
+      matchable = self[i]
+      first = false 
     end
-    self << (self.delete_at(i) + self.delete_at(i))
-    self.sort!
   end
 end
 
@@ -73,10 +75,9 @@ while !finished
           raise Exception
         end
       elsif (beamlist.length - outputc) % 2 == 0
-        beamlist.combine
-        beamlist.combine
+        beamlist.combine(2)
       else
-        break
+        raise Exception
       end
     end
     list_amount -= 1
