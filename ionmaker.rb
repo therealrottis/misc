@@ -36,7 +36,7 @@ class Array
     i = 0
     while self[i] != self[i+1]
       i += 1
-      if (i+1) <= self.length
+      if (i+1) >= self.length
         raise Exception
       end
     end
