@@ -1,3 +1,6 @@
+# For Cosmoteer, figures out a nice amount and power of output beams for an amount of input beams
+# Made by rottis
+# You are free to use and redistribute this code anywhere
 
 puts("count of ions?")
 count = gets.chomp.to_i
