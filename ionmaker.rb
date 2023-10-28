@@ -19,10 +19,8 @@ end
 puts "-----"
 
 divib = 0
-index = 0
-while count % 2**index == 0
+while count % 2**divib == 0 && count / 2**divib > 8 || divib == 0
   divib += 1
-  index += 1
 end
 # optimization + reduces a ton of obvious setups ae. (40x 2) from being displayed sometimes...
 
